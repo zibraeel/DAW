@@ -1,4 +1,5 @@
-﻿using DAW.Domain.Models;
+﻿using DAW.Domain.EF.ModelConfigurations;
+using DAW.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAW.Domain.EF
@@ -7,6 +8,12 @@ namespace DAW.Domain.EF
     {
         public HotelDbContext(DbContextOptions options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CustomerEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeEntityConfiguration());
         }
 
         public DbSet<Room> Rooms { get; set; }

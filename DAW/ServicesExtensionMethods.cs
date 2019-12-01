@@ -13,8 +13,8 @@ namespace DAW.WebApi
     {
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration config)
         {
-            string connectionString = config["ConnectionStrings:DefaultConnection"];
-            services.AddDbContext<HotelDbContext>(c => c.UseSqlServer(connectionString));
+            string connectionString = config["ConnectionStrings:DefaultString"];
+            services.AddDbContext<HotelDbContext>(c => c.UseSqlServer(connectionString, b => b.MigrationsAssembly("DAW.WebApi")));
         }
 
         public static void InjectRepositories(this IServiceCollection services)

@@ -1,12 +1,10 @@
 ﻿using DAW.Domain.Models.BaseModels;
 using System;
-using System.Collections.Generic;
 
 namespace DAW.Domain.Models
 {
     public class Booking : BaseEntity
     {
-        public List<int> RoomsID { get; set; }
         public int CustomerId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
